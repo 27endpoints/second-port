@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>27Endpoints — Websites, Email &amp; Social for SA Startups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0F1115;
+    --bg-elevated:#171A21;
+    --bg-card:#1B1F28;
+    --text:#F5F6FA;
+    --text-dim:#9AA1B2;
+    --text-faint:#5C6272;
+    --accent-blue:#4F7CFF;
+    --accent-blue-dim:#33406E;
+    --accent-amber:#FFB020;
+    --whatsapp:#25D366;
+    --border:#262B36;
+    --radius:14px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img,svg{display:block; max-width:100%;}
+
+  ::selection{background:var(--accent-blue); color:#fff;}
+
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:2px solid var(--accent-blue);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--accent-blue);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--whatsapp);
+    box-shadow:0 0 0 0 rgba(37,211,102,0.5);
+    animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,0.45);}
+    70%{box-shadow:0 0 0 8px rgba(37,211,102,0);}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .eyebrow .dot{animation:none;}
+    *{scroll-behavior:auto !important;}
+  }
+
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(15,17,21,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .logo{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:-0.01em;
+  }
+  .logo span{color:var(--accent-blue);}
+  .nav-links{
+    display:flex; gap:28px;
+    font-size:14.5px;
+    color:var(--text-dim);
+  }
+  .nav-links a:hover{color:var(--text);}
+  @media (max-width:640px){ .nav-links{display:none;} }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--body);
+    font-weight:600;
+    font-size:15px;
+    padding:13px 22px;
+    border-radius:999px;
+    border:1px solid transparent;
+    cursor:pointer;
+    text-decoration:none;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-whatsapp{
+    background:var(--whatsapp);
+    color:#08150C;
+  }
+  .btn-whatsapp:hover{background:#2fe273;}
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--border);
+    color:var(--text);
+  }
+  .btn-ghost:hover{border-color:var(--accent-blue);}
+  .btn-sm{padding:9px 16px; font-size:13.5px;}
+
+  .hero{
+    padding:76px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media (max-width:860px){
+    .hero .wrap{grid-template-columns:1fr; gap:40px;}
+    .hero{padding:52px 0 64px;}
+  }
+
+  .hero-eyebrow{margin-bottom:22px;}
+  .hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(40px, 6vw, 64px);
+    line-height:1.02;
+    letter-spacing:-0.02em;
+    margin-bottom:20px;
+  }
+  .hero h1 .slash{color:var(--accent-blue);}
+  .hero p.lede{
+    font-size:18px;
+    color:var(--text-dim);
+    max-width:480px;
+    margin-bottom:34px;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;}
+
+  .hero-meta{
+    display:flex; gap:28px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--text-faint);
+    flex-wrap:wrap;
+  }
+  .hero-meta strong{color:var(--text-dim); font-weight:500;}
+
+  .avatar-wrap{
+    position:relative;
+    width:100%;
+    max-width:340px;
+    margin:0 auto;
+    padding:34px;
+  }
+
+  /* soft ambient glow behind everything */
+  .avatar-glow{
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(79,124,255,0.45), transparent 55%),
+      radial-gradient(circle at 75% 75%, rgba(255,176,32,0.30), transparent 50%);
+    filter:blur(30px);
+    z-index:0;
+    animation:glow-shift 7s ease-in-out infinite;
+  }
+  @keyframes glow-shift{
+    0%,100%{transform:scale(1) rotate(0deg);}
+    50%{transform:scale(1.12) rotate(8deg);}
+  }
+
+  /* rotating dashed orbit ring */
+  .avatar-orbit{
+    position:absolute;
+    inset:6px;
+    border-radius:50%;
+    border:1.5px dashed rgba(79,124,255,0.45);
+    z-index:1;
+    animation:spin 18s linear infinite;
+  }
+  .avatar-orbit::before{
+    content:"";
+    position:absolute;
+    top:-4px; left:50%;
+    width:8px; height:8px;
+    margin-left:-4px;
+    background:var(--accent-amber);
+    border-radius:50%;
+    box-shadow:0 0 10px 2px rgba(255,176,32,0.7);
+  }
+  @keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+  }
+
+  .avatar-ring{
+    position:relative;
+    z-index:2;
+    aspect-ratio:1;
+    border-radius:50%;
+    padding:4px;
+    background:linear-gradient(135deg, var(--accent-blue), var(--accent-amber));
+    display:flex; align-items:center; justify-content:center;
+    overflow:visible;
+    box-shadow:0 20px 50px -14px rgba(79,124,255,0.55);
+  }
+  .avatar-photo{
+    width:100%; height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    border:3px solid var(--bg);
+    display:block;
+  }
+  .node{
+    position:absolute;
+    width:11px; height:11px;
+    border-radius:50%;
+    z-index:3;
+    animation:node-pulse 2.6s ease-in-out infinite;
+  }
+  .node-blue{
+    background:var(--accent-blue);
+    box-shadow:0 0 0 5px rgba(79,124,255,0.2), 0 0 14px rgba(79,124,255,0.6);
+  }
+  .node-amber{
+    background:var(--accent-amber);
+    box-shadow:0 0 0 5px rgba(255,176,32,0.2), 0 0 14px rgba(255,176,32,0.6);
+    animation-delay:1.2s;
+  }
+  @keyframes node-pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.35);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .avatar-glow, .avatar-orbit, .node{animation:none;}
+  }
+
+  .avatar-tag{
+    position:absolute;
+    top:8px;
+    right:8px;
+    z-index:3;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.04em;
+    color:var(--accent-amber);
+    background:rgba(255,176,32,0.12);
+    border:1px solid rgba(255,176,32,0.35);
+    padding:3px 9px;
+    border-radius:999px;
+  }
+
+  .avatar-caption{
+    text-align:center;
+    margin-top:22px;
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--text-faint);
+    position:relative;
+    z-index:2;
+  }
+  .avatar-caption strong{color:var(--text-dim); font-weight:500; display:block; font-size:15px; margin-bottom:2px; font-family:var(--body);}
+
+  section{padding:80px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:52px;
+  }
+  .section-head h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(28px, 4vw, 38px);
+    letter-spacing:-0.015em;
+    margin:16px 0 14px;
+  }
+  .section-head p{
+    color:var(--text-dim);
+    font-size:16.5px;
+  }
+
+  #services{
+    background:var(--bg-elevated);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+  }
+  .endpoint{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    margin-bottom:16px;
+    overflow:hidden;
+  }
+  .endpoint[open]{border-color:var(--accent-blue-dim);}
+  .endpoint summary{
+    list-style:none;
+    cursor:pointer;
+    padding:22px 24px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .endpoint summary::-webkit-details-marker{display:none;}
+  .method{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:12.5px;
+    padding:4px 10px;
+    border-radius:6px;
+    letter-spacing:0.02em;
+    white-space:nowrap;
+  }
+  .method-get{background:rgba(79,124,255,0.15); color:#8FADFF;}
+  .method-post{background:rgba(255,176,32,0.15); color:var(--accent-amber);}
+  .method-put{background:rgba(37,211,102,0.15); color:#5FE196;}
+  .method-patch{background:rgba(154,111,255,0.15); color:#B79CFF;}
+
+  .path{
+    font-family:var(--mono);
+    font-size:16px;
+    font-weight:500;
+    color:var(--text);
+  }
+  .badge-popular{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--accent-amber);
+    border:1px solid rgba(255,176,32,0.4);
+    padding:2px 8px;
+    border-radius:999px;
+  }
+  .endpoint-summary-text{
+    flex:1 1 220px;
+    color:var(--text-dim);
+    font-size:14.5px;
+    min-width:160px;
+  }
+  .price{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:19px;
+    color:var(--text);
+    white-space:nowrap;
+  }
+  .chevron{
+    color:var(--text-faint);
+    transition:transform 0.2s ease;
+    flex-shrink:0;
+  }
+  .endpoint[open] .chevron{transform:rotate(180deg);}
+
+  .endpoint-body{
+    padding:0 24px 26px;
+    border-top:1px solid var(--border);
+    margin-top:2px;
+    padding-top:20px;
+  }
+  .response-label{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-faint);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-bottom:12px;
+  }
+  .response-label .ok{color:#5FE196;}
+  ul.includes{
+    list-style:none;
+    display:grid;
+    gap:9px;
+  }
+  ul.includes li{
+    display:flex;
+    gap:10px;
+    font-size:14.5px;
+    color:var(--text-dim);
+  }
+  ul.includes li::before{
+    content:"→";
+    color:var(--accent-blue);
+    font-family:var(--mono);
+    flex-shrink:0;
+  }
+  .endpoint-footer-note{
+    margin-top:16px;
+    font-size:13px;
+    color:var(--text-faint);
+    font-style:italic;
+  }
+
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+  }
+  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
+  .about-grid p{
+    color:var(--text-dim);
+    font-size:16px;
+    margin-bottom:18px;
+  }
+  .about-grid p strong{color:var(--text); font-weight:600;}
+  .stat-list{display:grid; gap:22px;}
+  .stat{
+    border-left:2px solid var(--accent-blue-dim);
+    padding-left:18px;
+  }
+  .stat .num{
+    font-family:var(--mono);
+    font-size:26px;
+    font-weight:600;
+    color:var(--accent-blue);
+  }
+  .stat .label{
+    font-size:14px;
+    color:var(--text-dim);
+    margin-top:2px;
+  }
+
+  .cta-block{
+    background:var(--bg-elevated);
+    border-top:1px solid var(--border);
+    text-align:center;
+    padding:88px 0;
+  }
+  .cta-block h2{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(30px, 5vw, 44px);
+    letter-spacing:-0.02em;
+    margin-bottom:16px;
+  }
+  .cta-block p{
+    color:var(--text-dim);
+    font-size:16.5px;
+    margin-bottom:32px;
+  }
+
+  footer{
+    padding:36px 0;
+    border-top:1px solid var(--border);
+    font-size:13.5px;
+    color:var(--text-faint);
+  }
+  footer .foot-links{display:flex; gap:20px;}
+  footer a:hover{color:var(--text-dim);}
+
+  .float-whatsapp{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    z-index:60;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--whatsapp);
+    color:#08150C;
+    padding:14px 20px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:14.5px;
+    text-decoration:none;
+    box-shadow:0 8px 24px rgba(37,211,102,0.35);
+    transition:transform 0.15s ease;
+  }
+  .float-whatsapp:hover{transform:translateY(-2px) scale(1.02);}
+  .float-whatsapp .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:#08150C;
+    animation:pulse-dark 2.2s infinite;
+  }
+  @keyframes pulse-dark{
+    0%{box-shadow:0 0 0 0 rgba(8,21,12,0.4);}
+    70%{box-shadow:0 0 0 7px rgba(8,21,12,0);}
+    100%{box-shadow:0 0 0 0 rgba(8,21,12,0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .float-whatsapp .dot{animation:none;}
+  }
+  @media (max-width:480px){
+    .float-whatsapp span.label{display:none;}
+    .float-whatsapp{padding:14px; border-radius:50%;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">27<span>Endpoints</span></div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">Why us</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="https://wa.me/0764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener">
+      WhatsApp us
+    </a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow hero-eyebrow"><span class="dot"></span> STATUS 200 · Accepting new builds</div>
+      <h1>27<span class="slash">/</span>Endpoints</h1>
+      <p class="lede">Static websites, real business email and social pages — everything a new South African startup needs to stop running on a Gmail account.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/0764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="btn btn-whatsapp" target="_blank" rel="noopener">
+          Chat on WhatsApp
+        </a>
+        <a href="#services" class="btn btn-ghost">See what's included</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>R650 – R2,000</strong><br>flat-rate packages</div>
+        <div><strong>3–14 days</strong><br>typical delivery</div>
+        <div><strong>No back-end risk</strong><br>fully static builds</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="avatar-wrap">
+        <div class="avatar-glow"></div>
+        <div class="avatar-orbit"></div>
+        <div class="avatar-ring">
+          <img class="avatar-photo" src="images/profile.jpg" alt="Shobane, Founder of 27Endpoints">
+          <span class="node node-blue" style="top:2%; left:6%;"></span>
+          <span class="node node-amber" style="top:12%; right:-6%;"></span>
+          <span class="node node-blue" style="bottom:4%; left:-6%;"></span>
+          <span class="node node-amber" style="bottom:14%; right:4%;"></span>
+        </div>
+        <div class="avatar-tag">/founder</div>
+        <div class="avatar-caption">
+          <strong>Shobane</strong>
+          Founder, 27Endpoints
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Service reference</div>
+      <h2>Four endpoints. Everything you need to go live.</h2>
+      <p>No jargon, no hidden calls — pick a package below and open it to see exactly what comes back.</p>
+    </div>
+
+    <details class="endpoint" open>
+      <summary>
+        <span class="method method-get">GET</span>
+        <span class="path">/starter</span>
+        <span class="endpoint-summary-text">A single, professional landing page.</span>
+        <span class="price">R650</span>
+        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="endpoint-body">
+        <div class="response-label"><span class="ok">200 OK</span> — response body</div>
+        <ul class="includes">
+          <li>1-page site: hero, about, services/products, contact</li>
+          <li>Fully mobile responsive</li>
+          <li>Basic SEO setup (title tags, meta description)</li>
+          <li>1 round of revisions</li>
+          <li>Delivered in 3–5 days</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="endpoint">
+      <summary>
+        <span class="method method-post">POST</span>
+        <span class="path">/launch</span>
+        <span class="badge-popular">Most called</span>
+        <span class="endpoint-summary-text">Up to 4 pages, a real business email, two social profiles.</span>
+        <span class="price">R1,200</span>
+        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="endpoint-body">
+        <div class="response-label"><span class="ok">200 OK</span> — response body</div>
+        <ul class="includes">
+          <li>Up to 4 pages (Home, About, Services, Contact)</li>
+          <li>Professional email setup — Google Workspace or Zoho, on your own domain</li>
+          <li>2 social platforms branded (bio, profile &amp; cover images, links)</li>
+          <li>Static-friendly contact form, no back end required</li>
+          <li>2 rounds of revisions</li>
+          <li>Delivered in 7–10 days</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="endpoint">
+      <summary>
+        <span class="method method-put">PUT</span>
+        <span class="path">/growth</span>
+        <span class="endpoint-summary-text">The full first impression, plus a free seat in the ads course.</span>
+        <span class="price">R1,800</span>
+        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="endpoint-body">
+        <div class="response-label"><span class="ok">200 OK</span> — response body</div>
+        <ul class="includes">
+          <li>Everything in /launch</li>
+          <li>Up to 6 pages</li>
+          <li>Up to 4 social platforms branded</li>
+          <li>On-page copywriting polish (you provide rough text)</li>
+          <!-- <li>Free enrollment in the Ads Fundamentals course</li> -->
+          <li>Delivered in 10–14 days</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="endpoint">
+      <summary>
+        <span class="method method-patch">PATCH</span>
+        <span class="path">/custom</span>
+        <span class="endpoint-summary-text">A Django app for booking, dashboards or internal tools.</span>
+        <span class="price">from&nbsp;R2,000</span>
+        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="endpoint-body">
+        <div class="response-label"><span class="ok">200 OK</span> — response body</div>
+        <ul class="includes">
+          <li>Intermediate Django builds: booking systems, dashboards, content-managed sites</li>
+          <li>Scoped after a free 15-minute discovery chat</li>
+          <li>No online payment processing</li>
+        </ul>
+        <div class="endpoint-footer-note">R2,000 is the entry point for a simple custom build, not a ceiling — you'll get a fixed quote before any work starts.</div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why 27Endpoints</div>
+      <h2>Built for founders who haven't gone live yet.</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Most clients are <strong>new South African businesses running on a personal Gmail account</strong> — no site, no branded email, no consistent social presence. That's the exact gap 27Endpoints closes.</p>
+        <p>Everything is <strong>static and flat-priced</strong>. No online payment processing to secure, no surprise hourly bills, no back-and-forth over email — just WhatsApp, a clear package, and a live date.</p>
+        <p>Need something with real logic behind it — bookings, dashboards, internal tools? That's where the <strong>Django tier</strong> comes in, scoped properly before any work starts.</p>
+      </div>
+      <div class="stat-list">
+        <div class="stat">
+          <div class="num">R650</div>
+          <div class="label">Entry price for a live landing page</div>
+        </div>
+        <div class="stat">
+          <div class="num">3–14</div>
+          <div class="label">Days from kickoff to launch</div>
+        </div>
+        <div class="stat">
+          <div class="num">0</div>
+          <div class="label">Payment gateways handled directly — kept secure by referring to trusted platforms</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block" id="contact">
+  <div class="wrap">
+    <h2>Ready to stop running your business off Gmail?</h2>
+    <p>Send a message — most builds start the same week.</p>
+    <a href="https://wa.me/0764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="btn btn-whatsapp" target="_blank" rel="noopener">
+      Chat on WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
+    <div>© 2026 27Endpoints · South Africa</div>
+    <div class="foot-links">
+      <a href="#services">Services</a>
+      <a href="#about">Why us</a>
+      <a href="https://wa.me/0764320535" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/0764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="float-whatsapp" target="_blank" rel="noopener">
+  <span class="dot"></span>
+  <span class="label">WhatsApp us</span>
+</a>
+
+</body>
+</html>
