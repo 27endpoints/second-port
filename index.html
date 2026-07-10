@@ -287,6 +287,74 @@
   }
   .avatar-caption strong{color:var(--text-dim); font-weight:500; display:block; font-size:15px; margin-bottom:2px; font-family:var(--body);}
 
+  /* TRUST BAR */
+  .trust-bar{
+    position:relative;
+    padding:30px 0;
+    background:var(--bg-elevated);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    overflow:hidden;
+  }
+  .trust-bar::before{
+    content:"";
+    position:absolute;
+    top:-1px; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, transparent, var(--accent-blue), var(--accent-amber), var(--whatsapp), transparent);
+    background-size:200% 100%;
+    animation:shimmer 6s linear infinite;
+  }
+  @keyframes shimmer{
+    0%{background-position:200% 0;}
+    100%{background-position:-200% 0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .trust-bar::before{animation:none;}
+  }
+  .trust-label{
+    text-align:center;
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    margin-bottom:18px;
+  }
+  .trust-items{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .trust-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+    font-weight:500;
+    color:var(--text-dim);
+    padding:8px 16px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    background:var(--bg-card);
+    transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .trust-item:hover{
+    border-color:var(--accent-blue-dim);
+    transform:translateY(-2px);
+  }
+  .trust-item svg{
+    width:15px; height:15px;
+    flex-shrink:0;
+  }
+  .trust-item:nth-child(odd) svg{color:var(--accent-blue);}
+  .trust-item:nth-child(even) svg{color:var(--accent-amber);}
+  @media (max-width:600px){
+    .trust-items{gap:10px;}
+    .trust-item{font-size:13px; padding:7px 13px;}
+  }
+
   section{padding:80px 0;}
   .section-head{
     max-width:640px;
@@ -340,6 +408,7 @@
   .method-post{background:rgba(255,176,32,0.15); color:var(--accent-amber);}
   .method-put{background:rgba(37,211,102,0.15); color:#5FE196;}
   .method-patch{background:rgba(154,111,255,0.15); color:#B79CFF;}
+  .method-head{background:rgba(45,212,191,0.15); color:#5EEAD4;}
 
   .path{
     font-family:var(--mono);
@@ -354,6 +423,16 @@
     text-transform:uppercase;
     color:var(--accent-amber);
     border:1px solid rgba(255,176,32,0.4);
+    padding:2px 8px;
+    border-radius:999px;
+  }
+  .badge-lite{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:#5EEAD4;
+    border:1px solid rgba(45,212,191,0.4);
     padding:2px 8px;
     border-radius:999px;
   }
@@ -408,6 +487,20 @@
     color:var(--accent-blue);
     font-family:var(--mono);
     flex-shrink:0;
+  }
+  ul.includes li.sub-item{
+    padding-left:24px;
+    font-size:13.5px;
+    color:var(--text-faint);
+  }
+  ul.includes li.sub-item::before{content:"·"; color:var(--text-faint);}
+  ul.includes code{
+    font-family:var(--mono);
+    font-size:13px;
+    color:#8FADFF;
+    background:rgba(79,124,255,0.1);
+    padding:1px 6px;
+    border-radius:4px;
   }
   .endpoint-footer-note{
     margin-top:16px;
@@ -521,7 +614,7 @@
       <a href="#about">Why us</a>
       <a href="#contact">Contact</a>
     </div>
-    <a href="https://wa.me/0764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener">
+    <a href="https://wa.me/27764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener">
       WhatsApp us
     </a>
   </div>
@@ -532,16 +625,16 @@
     <div>
       <div class="eyebrow hero-eyebrow"><span class="dot"></span> STATUS 200 · Accepting new builds</div>
       <h1>27<span class="slash">/</span>Endpoints</h1>
-      <p class="lede">Static websites, real business email and social pages — everything a new South African startup needs to stop running on a Gmail account.</p>
+      <p class="lede">Professional websites, business email and social media setup - everything a South African startup needs to launch with confidence.</p>
       <div class="hero-ctas">
-        <a href="https://wa.me/0764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="btn btn-whatsapp" target="_blank" rel="noopener">
+        <a href="https://wa.me/27764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="btn btn-whatsapp" target="_blank" rel="noopener">
           Chat on WhatsApp
         </a>
         <a href="#services" class="btn btn-ghost">See what's included</a>
       </div>
       <div class="hero-meta">
-        <div><strong>R650 – R2,000</strong><br>flat-rate packages</div>
-        <div><strong>3–14 days</strong><br>typical delivery</div>
+        <div><strong>R250 – R2,000</strong><br>flat-rate packages</div>
+        <div><strong>24hrs–14 days</strong><br>typical delivery</div>
         <div><strong>No back-end risk</strong><br>fully static builds</div>
       </div>
     </div>
@@ -551,7 +644,7 @@
         <div class="avatar-glow"></div>
         <div class="avatar-orbit"></div>
         <div class="avatar-ring">
-          <img class="avatar-photo" src="./profile.jpg" alt="Shobane, Founder of 27Endpoints">
+          <img class="avatar-photo" src="images/port.webp" alt="Shobane, Founder of 27Endpoints">
           <span class="node node-blue" style="top:2%; left:6%;"></span>
           <span class="node node-amber" style="top:12%; right:-6%;"></span>
           <span class="node node-blue" style="bottom:4%; left:-6%;"></span>
@@ -567,20 +660,71 @@
   </div>
 </header>
 
+<section class="trust-bar">
+  <div class="wrap">
+    <div class="trust-label">Trusted to help startups launch professionally</div>
+    <div class="trust-items">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Business websites
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Professional business email
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Domain setup
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Social media setup
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="services">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Service reference</div>
-      <h2>Four endpoints. Everything you need to go live.</h2>
+      <h2>Five endpoints. Everything you need to go live.</h2>
       <p>No jargon, no hidden calls — pick a package below and open it to see exactly what comes back.</p>
     </div>
 
     <details class="endpoint" open>
       <summary>
+        <span class="method method-head">HEAD</span>
+        <span class="path">/email-starter</span>
+        <span class="badge-lite">Lightest option</span>
+        <span class="endpoint-summary-text">A professional email identity — no monthly hosting fees.</span>
+        <span class="price">R250<br></span>
+        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="endpoint-body">
+        <div class="response-label"><span class="ok">200 OK</span> — response body</div>
+        <ul class="includes">
+          <li>Professional business email setup</li>
+          <li>Up to 5 custom addresses, including:</li>
+          <li class="sub-item"><code>info@yourbusiness.co.za</code></li>
+          <li class="sub-item"><code>sales@yourbusiness.co.za</code></li>
+          <li class="sub-item"><code>support@yourbusiness.co.za</code></li>
+          <li class="sub-item"><code>admin@yourbusiness.co.za</code></li>
+          <li class="sub-item"><code>hello@yourbusiness.co.za</code></li>
+          <li>All mail delivered straight to your existing Gmail inbox</li>
+          <li>Complete setup and testing</li>
+          <li>7 days of post-setup support</li>
+        </ul>
+        <div class="endpoint-footer-note">Once-off price — not a subscription. Perfect for startups, freelancers and sole proprietors who don't need a full website yet. Delivered within 24 hours once your domain is ready. Domain registration isn't included — you always own your domain, setup is handled for you.</div>
+      </div>
+    </details>
+
+    <details class="endpoint">
+      <summary>
         <span class="method method-get">GET</span>
         <span class="path">/starter</span>
         <span class="endpoint-summary-text">A single, professional landing page.</span>
-        <span class="price">R650</span>
+        <span class="price">R700</span>
         <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </summary>
       <div class="endpoint-body">
@@ -674,12 +818,12 @@
       </div>
       <div class="stat-list">
         <div class="stat">
-          <div class="num">R650</div>
-          <div class="label">Entry price for a live landing page</div>
+          <div class="num">R250</div>
+          <div class="label">Entry price for a professional business email</div>
         </div>
         <div class="stat">
-          <div class="num">3–14</div>
-          <div class="label">Days from kickoff to launch</div>
+          <div class="num">24hrs–14d</div>
+          <div class="label">From kickoff to delivery, depending on package</div>
         </div>
         <div class="stat">
           <div class="num">0</div>
@@ -694,7 +838,7 @@
   <div class="wrap">
     <h2>Ready to stop running your business off Gmail?</h2>
     <p>Send a message — most builds start the same week.</p>
-    <a href="https://wa.me/0764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="btn btn-whatsapp" target="_blank" rel="noopener">
+    <a href="https://wa.me/27764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="btn btn-whatsapp" target="_blank" rel="noopener">
       Chat on WhatsApp
     </a>
   </div>
@@ -711,7 +855,7 @@
   </div>
 </footer>
 
-<a href="https://wa.me/0764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="float-whatsapp" target="_blank" rel="noopener">
+<a href="https://wa.me/27764320535?text=Hi%2027Endpoints%2C%20I%27d%20like%20to%20get%20a%20website%20started" class="float-whatsapp" target="_blank" rel="noopener">
   <span class="dot"></span>
   <span class="label">WhatsApp us</span>
 </a>
